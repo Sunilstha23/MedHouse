@@ -6,9 +6,6 @@ from django.http import Http404
 def dashboard(request):
     return render(request, 'customer/dashboard.htm')
 
-def login(request):
-    return render(request, 'customer/login.htm')
-
 def signin(request):
     return render(request, 'customer/signin.htm')
 
