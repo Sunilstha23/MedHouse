@@ -1,6 +1,5 @@
 {% extends 'base.htm' %}
 {% load static %}
-
 {% block content %}
 <section class="signin-page account">
   <div class="container">
@@ -34,17 +33,18 @@
                           <option>Female</option>
                           <option>other</option>
                       </select>
-                      <div class="form-group date">
-                          <input type="input" class="form-control" id="datepicker" placeholder="birth of date">
+                      <div class="input-append date form_datetime">
+                        <input size="16" type="text" value="" readonly>
+                        <span class="add-on"><i class="tf-ion-android-calendar"></i></span>
+                    </div>
+                      <div class="form-group">
+                          <input type="password" class="form-control"  id="txtPassword" placeholder="Password">
                       </div>
                       <div class="form-group">
-                          <input type="password" class="form-control"  placeholder="Password">
-                      </div>
-                      <div class="form-group">
-                          <input type="password" class="form-control"  placeholder="confirm Password">
+                          <input type="password" class="form-control" id="txtConfirmPassword"  placeholder="confirm Password">
                       </div>
                       <div class="text-center">
-                          <button type="submit" class="btn btn-main text-center">Sign In</button>
+                          <button type="submit" id="btnSubmit" class="btn btn-main text-center">Sign In</button>
                       </div>
                   </form>
                   <p class="mt-20">Already hava an account ?<a href="/login.htm"> Login</a></p>
@@ -54,18 +54,24 @@
       </div>
   </div>
 </section>
-<script>
-  document.querySelector('.button').onclick = function(){
-    var password = document.querySelector('.confirmPassword').value;
 
-    if(password == ""){
-      alert("feld cannot be empty");
-    }
-    else if(password != confirmPassword){
-      alert("password didn't match try again");
-      return false
-    }
-  }
+<script type="text/javascript">
+    // Data Picker Initialization
+    $(".form_datetime").datetimepicker({
+        format: "dd MM yyyy - hh:ii"
+    });
+
+    $(function () {
+        $("#btnSubmit").click(function () {
+            var password = $("#txtPassword").val();
+            var confirmPassword = $("#txtConfirmPassword").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
 </script>
 {% endblock content %}
 
