@@ -1,4 +1,4 @@
-from .models import ChatModel as chatModel
+from chat_model import ChatModel as chatModel
 import nltk
 import pickle
 import numpy as np

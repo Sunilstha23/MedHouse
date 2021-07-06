@@ -27,7 +27,7 @@
                 <!-- BEGINING OF MESSAGE-->
                 <div class="container1 fixed rev">
                 <ul class="message-body">
-
+                    
                 </ul>
 
                 </div>
@@ -39,7 +39,7 @@
                     <form class="form">
                     <div class="sendMess">
                         <button class="attachment"><i class="tf-ion-person"></i></button>
-                        <textarea id="text" name="" cols="20" rows="3" placeholder="enter your message">
+                        <textarea id="text" required name="text" cols="20" rows="3" placeholder="enter your message">
                         </textarea>
                         <button class="send"><i class="tf-ion-android-send"></i></button>
                     </div>
@@ -57,11 +57,7 @@
 //chat bot
 
     const messages = [
-    "you are not serious",
-    "kikiki so what?",
-    "where did you come from",
-    "lol are you kidding me",
-    "and so  what do u mean"
+    
     ];
     let counter = 0;
     const chatContainer = document.querySelector(".container");
@@ -96,7 +92,7 @@
 
     form.addEventListener("submit", e => {
     e.preventDefault();
-    msg = text.value;
+    msg = data.value;
     let li = document.createElement("li");
     li.innerHTML = msg;
     li.classList.add("chatbox");
