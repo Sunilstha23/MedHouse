@@ -37,9 +37,9 @@
                 <div class="chat-footer">
                 <div class="bottom">
                     <form class="form">
-                    <div class="sendMess">
+                    <div class="sendMess" id="userInput ">
                         <button class="attachment"><i class="tf-ion-person"></i></button>
-                        <textarea id="text" required name="text" cols="20" rows="3" placeholder="enter your message">
+                        <textarea id="text" name="text" cols="20" rows="3" placeholder="enter your message">
                         </textarea>
                         <button class="send"><i class="tf-ion-android-send"></i></button>
                     </div>
@@ -56,89 +56,27 @@
 <script>  
 //chat bot
 
-    const messages = [
-    
-    ];
-    let counter = 0;
-    const chatContainer = document.querySelector(".container");
-    const chatArea = document.querySelector(".message-body");
-    const text = document.querySelector("#text");
-    const form = document.querySelector(".form");
+    function getBotResponse() {
+          var rawText = $("#text").val();
+          var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+          $("#text").val("");
+          $(".message-body").append(userHtml);
+          document
+            .getElementById("userInput")
+            .scrollIntoView({ block: "start", behavior: "smooth" });
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+            $("#.message-body").append(botHtml);
+            document
+              .getElementById("userInput")
+              .scrollIntoView({ block: "start", behavior: "smooth" });
+          });
+        }
+        $("#text").keypress(function(e) {
+          if (e.which == 13) {
+            getBotResponse();
+          }
+        });
 
-    function isOverflown(element) {
-    return (
-    element.scrollHeight > element.clientHeight ||
-    element.scrollWidth > element.clientWidth
-    );
-    }
-
-    function scroll() {
-    chatArea.scroll(0,chatArea.scrollHeight);
-    }
-
-    function reply(msg) {
-    let li = document.createElement("li");
-    li.innerHTML = msg;
-    li.classList.add("chatbox");
-    li.classList.add("chatbox-incoming");
-    chatArea.append(li);
-    scroll();
-    }
-
-    //EVENT LISTENERS
-    text.addEventListener("focus", () => {
-    chatContainer.scrollTop = chatArea.scrollHeight + 560;
-    });
-
-    form.addEventListener("submit", e => {
-    e.preventDefault();
-    msg = data.value;
-    let li = document.createElement("li");
-    li.innerHTML = msg;
-    li.classList.add("chatbox");
-    li.classList.add("chatbox-outgoing");
-    chatArea.append(li);
-    scroll();
-    text.value = "";
-    // chatContainer.scrollTop =chatContainer.scrollHeight;
-    text.focus();
-    setTimeout(reply, 1000, messages[counter]);
-    counter++;
-    if (counter == messages.length) {
-    counter = 0;
-    }
-    });
-
-    window.onload = ()=>{
-    reply("hi please type a message for me")
-    }
-
-    //buble body
-    const body = document.querySelector('body');
-
-    // chatpot
-    function openChatBubble() {
-    var element = document.getElementById("chat-bubble");
-    element.classList.toggle("open")
-    }
-
-    form.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-    msg = text.value;
-    let li = document.createElement("li");
-    li.innerHTML = msg;
-    li.classList.add("chatbox");
-    li.classList.add("chatbox-outgoing");
-    chatArea.append(li);
-    scroll();
-    text.value = "";
-    // chatContainer.scrollTop =chatContainer.scrollHeight;
-    text.focus();
-    setTimeout(reply, 1000, messages[counter]);
-    counter++;
-    if (counter == messages.length) {
-    counter = 0;
-    }
-    }
-    });
+    f
 </script>

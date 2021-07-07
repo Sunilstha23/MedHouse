@@ -2,10 +2,15 @@ from chat_model import ChatModel as chatModel
 import nltk
 import pickle
 import numpy as np
-from keras.models import load_model
 import json
 import random
 import utils as u
+from flask import Flask,render_template,request
+from chatbot.configuration import DATAFILE
+from nltk.stem import WordNetLemmatizer
+lemmatizer = WordNetLemmatizer()
+from keras.models import load_model
+app = Flask(__name__)
 
 class ChatApp:
 
@@ -53,8 +58,12 @@ class ChatApp:
             return_list.append({"intent": self._classes[r[0]], "probability": str(r[1])})
         return return_list
 
-
+    @app.route("/get")
     def getResponse(self, ints, intents_json):
+        inp = request.args.get('msg')
+        results = self.predict_class(sentence=inp)
+        resultsindex = np.array(results)
+
         tag = ints[0]['intent']
         list_of_intents = intents_json['intents']
         for i in list_of_intents:
@@ -69,4 +78,14 @@ class ChatApp:
         return res
 
 
+    @app.route('/')
+    def chatbot():
+        return render_template("chatbot.htm")
 
+    
+if __name__ == '__main__':
+    """
+    This is the part where the program is executed. 
+    
+    """
+    app.run(debug=True)    
