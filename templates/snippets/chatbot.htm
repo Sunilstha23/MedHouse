@@ -53,9 +53,16 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>  
 //chat bot
 
+    let counter = 0;
+    const chatContainer = document.querySelector(".container");
+    const chatArea = document.querySelector(".message-body");
+    const text = document.querySelector("#text");
+    const form = document.querySelector(".form");
+    
     function getBotResponse() {
           var rawText = $("#text").val();
           var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
@@ -71,12 +78,93 @@
               .getElementById("userInput")
               .scrollIntoView({ block: "start", behavior: "smooth" });
           });
+    }
+    $("#text").keypress(function(e) {
+        if (e.which == 13) {
+        getBotResponse();
         }
-        $("#text").keypress(function(e) {
-          if (e.which == 13) {
-            getBotResponse();
-          }
-        });
+    });
+    function openChatBubble() {
+        var element = document.getElementById("chat-bubble");
+        element.classList.toggle("open")
+        }
+        function isOverflown(element) {
+        return (
+          element.scrollHeight > element.clientHeight ||
+          element.scrollWidth > element.clientWidth
+        );
+    }
+     
+    
+    function scroll() {
+        chatArea.scroll(0,chatArea.scrollHeight);
+    }
 
-    f
+    function reply(msg) {
+    let li = document.createElement("li");
+    li.innerHTML = msg;
+    li.classList.add("chatbox");
+    li.classList.add("chatbox-incoming");
+    chatArea.append(li);
+    scroll();
+    }
+
+
+    //EVENT LISTENERS
+    text.addEventListener("focus", () => {
+    chatContainer.scrollTop = chatArea.scrollHeight + 560;
+    });
+
+
+
+    form.addEventListener("submit", e => {
+        e.preventDefault();
+        msg = text.value;
+        let li = document.createElement("li");
+        li.innerHTML = msg;
+        li.classList.add("chatbox");
+        li.classList.add("chatbox-outgoing");
+        chatArea.append(li);
+        scroll();
+        text.value = "";
+        chatContainer.scrollTop =chatContainer.scrollHeight;
+        text.focus();
+        setTimeout(reply, 1000, messages[counter]);
+        counter++;
+        if (counter == messages.length) {
+        counter = 0;
+        }
+    });
+
+
+    window.onload = ()=>{
+    reply("hi please type a message for me")
+    }
+
+    //buble body
+    const body = document.querySelector('body');
+
+    
+
+    form.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+    msg = text.value;
+    let li = document.createElement("li");
+    li.innerHTML = msg;
+    li.classList.add("chatbox");
+    li.classList.add("chatbox-outgoing");
+    chatArea.append(li);
+    scroll();
+    text.value = "";
+    chatContainer.scrollTop =chatContainer.scrollHeight;
+    text.focus();
+    setTimeout(reply, 1000, messages[counter]);
+    counter++;
+    if (counter == messages.length) {
+    counter = 0;
+    }
+    }
+    });
+
+    
 </script>
