@@ -10,4 +10,5 @@ urlpatterns = [
     path('',include('medicalapp.urls')),
     path('admin/', admin.site.urls),
     path('chatbot/',include('chatbot.urls')),
+    path('lab/',include('lab.urls')),
 ]

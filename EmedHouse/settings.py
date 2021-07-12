@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cart',
     'customer',
     'vendor',
+    'lab',
     'order',
     'product',
     'chatbot',
