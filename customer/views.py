@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from customer.models import Customer
 from django.http import Http404
 
+
 # Create your views here.
 def dashboard(request):
     return render(request, 'customer/dashboard.htm')

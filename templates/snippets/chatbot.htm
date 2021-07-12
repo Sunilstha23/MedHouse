@@ -37,12 +37,12 @@
                 <div class="chat-footer">
                 <div class="bottom">
                     <form class="form">
-                    <div class="sendMess" id="userInput ">
-                        <button class="attachment"><i class="tf-ion-person"></i></button>
-                        <textarea id="text" name="text" cols="20" rows="3" placeholder="enter your message">
-                        </textarea>
-                        <button class="send"><i class="tf-ion-android-send"></i></button>
-                    </div>
+                        <div class="sendMess" id="userInput ">
+                            <button class="attachment"><i class="tf-ion-person"></i></button>
+                            <textarea id="textInput" name="text" cols="20" rows="3" placeholder="enter your message">
+                            </textarea>
+                            <button class="send"><i class="tf-ion-android-send"></i></button>
+                        </div>
                     </form>
                 </div>
                 </div>
@@ -56,34 +56,51 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>  
 //chat bot
+    window.onload = ()=>{
+        reply("hi please type a message for me")
+    } 
+
+    $('.send').click(function(e){
+        e.preventDefault();
+
+        console.log($("#textInput").val());
+        $.ajax({
+            type: "POST",
+            headers: {'X-CSRFToken': csrftoken},
+            url: "/chatbot/",
+            data: {
+                question: $("#textInput").val().trim()
+            },
+            success: function(result) {
+                msg=$("#textInput").val();
+                reply(msg);
+
+                // let li = document.createElement("li");
+                // li.innerHTML = result.response;
+                // li.classList.add("chatbox");
+                // li.classList.add("chatbox-incoming");
+                // $(".message-body").append(li);
+                // scroll();
+
+                // $(".message-body").append("<br>Me: "+$("#textInput").val()+ "<br> Karabo: "+result.response);
+                // $("#textInput").val("")
+            },
+            error: function(result) {
+                // alert('error');
+                console.log(result);
+            }
+        });    
+    });
+    
 
     let counter = 0;
     const chatContainer = document.querySelector(".container");
     const chatArea = document.querySelector(".message-body");
-    const text = document.querySelector("#text");
+    const text = document.querySelector("#textInput");
     const form = document.querySelector(".form");
     
-    function getBotResponse() {
-          var rawText = $("#text").val();
-          var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
-          $("#text").val("");
-          $(".message-body").append(userHtml);
-          document
-            .getElementById("userInput")
-            .scrollIntoView({ block: "start", behavior: "smooth" });
-          $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<p class="botText"><span>' + data + "</span></p>";
-            $("#.message-body").append(botHtml);
-            document
-              .getElementById("userInput")
-              .scrollIntoView({ block: "start", behavior: "smooth" });
-          });
-    }
-    $("#text").keypress(function(e) {
-        if (e.which == 13) {
-        getBotResponse();
-        }
-    });
+    
+    
     function openChatBubble() {
         var element = document.getElementById("chat-bubble");
         element.classList.toggle("open")
@@ -95,28 +112,25 @@
         );
     }
      
-    
-    function scroll() {
-        chatArea.scroll(0,chatArea.scrollHeight);
-    }
-
-    function reply(msg) {
-    let li = document.createElement("li");
-    li.innerHTML = msg;
-    li.classList.add("chatbox");
-    li.classList.add("chatbox-incoming");
-    chatArea.append(li);
-    scroll();
-    }
-
-
     //EVENT LISTENERS
     text.addEventListener("focus", () => {
     chatContainer.scrollTop = chatArea.scrollHeight + 560;
     });
 
 
+    function scroll() {
+        chatArea.scroll(0,chatArea.scrollHeight);
+    }
 
+    function reply(msg) {
+        let li = document.createElement("li");
+        li.innerHTML = msg;
+        li.classList.add("chatbox");
+        li.classList.add("chatbox-incoming");
+        chatArea.append(li);
+        scroll();
+    }
+    
     form.addEventListener("submit", e => {
         e.preventDefault();
         msg = text.value;
@@ -136,35 +150,49 @@
         }
     });
 
-
-    window.onload = ()=>{
-    reply("hi please type a message for me")
+    function send(){
+        msg = text.value;
+        let li = document.createElement("li");
+        li.innerHTML = msg;
+        li.classList.add("chatbox");
+        li.classList.add("chatbox-outgoing");
+        chatArea.append(li);
+        scroll();
+        text.value = "";
+        chatContainer.scrollTop =chatContainer.scrollHeight;
+        text.focus();
+        setTimeout(reply, 1000, messages[counter]);
+        counter++;
+        if (counter == messages.length) {
+        counter = 0;
+        }
     }
-
-    //buble body
-    const body = document.querySelector('body');
-
     
 
-    form.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-    msg = text.value;
-    let li = document.createElement("li");
-    li.innerHTML = msg;
-    li.classList.add("chatbox");
-    li.classList.add("chatbox-outgoing");
-    chatArea.append(li);
-    scroll();
-    text.value = "";
-    chatContainer.scrollTop =chatContainer.scrollHeight;
-    text.focus();
-    setTimeout(reply, 1000, messages[counter]);
-    counter++;
-    if (counter == messages.length) {
-    counter = 0;
-    }
-    }
-    });
+    // //buble body
+    // const body = document.querySelector('body');
+
+    // function getBotResponse() {
+    //       var rawText = $("#textInput").val();
+    //       var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+    //       $("#textInput").val("");
+    //       $(".message-body").append(userHtml);
+    //       document
+    //         .getElementById("userInput")
+    //         .scrollIntoView({ block: "start", behavior: "smooth" });
+    //       $.get("/get", { msg: rawText }).done(function(data) {
+    //         var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+    //         $("#.message-body").append(botHtml);
+    //         document
+    //           .getElementById("userInput")
+    //           .scrollIntoView({ block: "start", behavior: "smooth" });
+    //       });
+    // }
+    // $("#textInput").keypress(function(e) {
+    //     if (e.which == 13) {
+    //     getBotResponse();
+    //     }
+    // });
 
     
 </script>
