@@ -170,12 +170,17 @@ def vendors(request):
 
 def vendorDetails(request,id):
     try:
+        context = {
+                'topic':'Vendors',
+                'account': 'Vendor',
+                'recent_page': 'Vendor Details',
+                }
         print(id)
         vendor = Vendor.objects.get(id=id)
         vendor_img = VendorImage.objects.get(img_type="profile", vendor=id)
         products = ProductImage.objects.filter(vendor=id, main=True)
 
-        return render(request,'customer/vendor-details.htm',{'vendor':vendor, 'vendor_img': vendor_img , 'products' : products})
+        return render(request,'customer/vendor-details.htm',{'context' : context, 'vendor':vendor, 'vendor_img': vendor_img , 'products' : products})
     except:
         return render(request,'product/shop/')
 
@@ -195,12 +200,17 @@ def lab(request):
 
 def labDetails(request,id):
     try:
+        context = {
+                'topic':'Lab',
+                'account': 'lab',
+                'recent_page': 'Lab Details',
+                }
         print(id)
         lab = Lab.objects.get(id=id)
         lab_img = LabImage.objects.get(img_type="profile", lab=id)
         # products = ProductImage.objects.filter(lab=id, main=True)
 
-        return render(request,'customer/lab-details.htm',{'lab':lab, 'lab_img': lab_img})
+        return render(request,'customer/lab-details.htm',{'context' : context, 'lab':lab, 'lab_img': lab_img})
     except:
         return render(request,'service/shop/') 
 
