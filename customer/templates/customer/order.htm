@@ -4,29 +4,29 @@
 {% block content %}
 {% include 'snippets/customer-header.htm'%}
 {% include 'snippets/page-header.htm' %}
-<section class="user-dashboard page-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+<section class="user-dashboard page-wrapper noBig">
+    <div class="container noBig">
+        <div class="row noBig">
+            <div class="col-md-12 noBig">
                 <ul class="list-inline dashboard-menu text-center">
-                    <li><a href="/customer/dashboard/">Dashboard</a></li>
-                    <li><a class="active" href="/customer/order/">Orders</a></li>
-                    <li><a href="/customer/doctor-appointment/">Doctor Appointments</a></li>
-                    <li><a href="/customer/appointment/">Lab Appointments</a></li>
+                    <li class="noBig"> <a href="/customer/dashboard/">Dashboard</a></li>
+                    <li class="noBig"> <a class="active" href="/customer/order/">Orders</a></li>
+                    <li class="noBig"> <a href="/customer/doctor-appointment/">Doctor Appointments</a></li>
+                    <li class="noBig"> <a href="/customer/appointment/">Lab Appointments</a></li>
                 </ul>
-                <div style="margin-top: 20px;">
-                    <nav class="navbar navbar-light bg-light text-center">
-                        <form class="form-inline">
+                <div class="mt-10 noBig">
+                    <nav class="navbar navbar-light bg-light text-center noBig">
+                        <form class="form-inline noBig">
                           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                       </nav>
                 </div>
-                <div class="dashboard-wrapper user-dashboard">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
+                <div class="dashboard-wrapper user-dashboard noBig">
+                    <div class="table-responsive noBig">
+                        <table class="table noBig">
+                            <thead class="noBig">
+                                <tr class="noBig">
                                     <th>Order ID</th>
                                     <th>Vendor</th>
                                     <th>Date</th>
@@ -36,9 +36,9 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="noBig">
                                 {% for order in orders%}
-                                    <tr>
+                                    <tr class="noBig">
                                         <td>#{{order.id}}</td>
                                         <td>{{order.vendor.full_name}}</td>
                                         <td>{{order.timestamp}}</td>
@@ -67,26 +67,26 @@
 {% regroup order_items by order as o_items %}
 
 {% for items in o_items%}
-<div class="modal fade" id="changeStatus_{{ items.grouper.id }}">
-    <div class="modal-dialog">
-        <div class="modal-content product-checkout-details">
-            <div class="modal-header block">
+<div class="modal fade noBig" id="changeStatus_{{ items.grouper.id }}">
+    <div class="modal-dialog noBig">
+        <div class="modal-content product-checkout-details noBig">
+            <div class="modal-header block noBig">
                 <button type="button" class="close" data-dismiss="modal">×</button> 
                 <h4 class="widget-title">Detail of order</h4>   
                 {% for item in items.list%}
                 <hr>
-                <div class="media product-card">
+                <div class="media product-card noBig">
                     <a class="pull-left" href="product-single.htm">
                        <img class="media-object" src="/media/{{item.image.image}}" alt="Image" />
                     </a>
-                    <div class="media-body">
+                    <div class="media-body noBig">
                        <h4 class="media-heading"><a href="product-single.htm">{{item.product.title}}</a></h4>
                        <p class="price">{{item.quantity}} x $ {{item.unit_price}}</p>
                     </div>
                  </div>
                 {% endfor %}    
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer noBig">
                 <button type="button" class="btn-css btn btn-secondory" data-dismiss="modal">close</button>                               
             </div>
         </div> 

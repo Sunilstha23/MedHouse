@@ -136,6 +136,7 @@ $(document).ready(function() {
     window.localStorage.setItem('text-height', 0);
     window.localStorage.setItem('text-space', 0);
     window.localStorage.setItem('font-family', 0);
+    window.localStorage.setItem('cursor', 0);
 
     location.reload();
 });
@@ -369,13 +370,13 @@ $('#highlight').on('click', function() {
     if(highlight == 1){
       $(this).attr('text-highlight', 0);
       window.localStorage.setItem('high-light', 0);
-      $("#tick").css("visibility", "hidden");
+      $("#check-highlight").css("visibility", "hidden");
    
     }else{
       $(this).attr('text-highlight', parseInt(highlight) + 1);
 
       window.localStorage.setItem('high-light', parseInt(highlight) + 1);
-      $("#tick").css("visibility", "visible");
+      $("#check-highlight").css("visibility", "visible");
     }
 
     checkAccessible();
@@ -516,11 +517,11 @@ $(document).ready(function(){
   
       if(highlight == 0){
         $('a:not(.noBig)').removeClass('highlight');
-        $("#tick").css("visibility", "hidden");
+        $("#check-highlight").css("visibility", "hidden");
       }
       else{
         $('a:not(.noBig)').addClass('highlight');
-        $("#tick").css("visibility", "visible");
+        $("#check-highlight").css("visibility", "visible");
       }
     }else{
       window.localStorage.setItem('high-light', 0);
@@ -552,7 +553,7 @@ $(document).ready(function(){
     }
 
     //check accessible
-    if((parseInt(window.localStorage.getItem('high-light'))+parseInt(window.localStorage.getItem('text-height'))+parseInt(window.localStorage.getItem('text-size'))+parseInt(window.localStorage.getItem('text-space'))+parseInt(window.localStorage.getItem('contrast')))>0){
+    if((parseInt(window.localStorage.getItem('high-light'))+parseInt(window.localStorage.getItem('text-height'))+parseInt(window.localStorage.getItem('text-size'))+parseInt(window.localStorage.getItem('font-family'))+parseInt(window.localStorage.getItem('cursor'))+parseInt(window.localStorage.getItem('text-space'))+parseInt(window.localStorage.getItem('contrast')))>0){
       $("#check-ace").css("visibility","visible");
     } else {
       $("#check-ace").css("visibility","hidden");
