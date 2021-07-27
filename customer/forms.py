@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate, get_user_model
+from django.forms import widgets
 from .models import Customer, User, CustomerImage
 
 user = get_user_model()

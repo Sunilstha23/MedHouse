@@ -5,18 +5,18 @@
 {% include 'snippets/vendor-dashboard-header.htm'%}
 {% include 'snippets/page-header.htm'%}
 
-<section class="products section">
-    <div class="container">
-        <div class="row">
-            <ul class="list-inline dashboard-menu text-center">
+<section class="products section noBig" role="main">
+    <div class="container noBig">
+        <div class="row noBig">
+            <ul class="list-inline dashboard-menu text-center noBig">
                 <li><a  href="/vendor/dashboard/">Dashboard</a></li>
                 <li><a href="/vendor/order/">Orders</a></li>
                 <li><a href="/vendor/profile-details/">Profile Details</a></li>
                 <li><a class="active" href="/vendor/product-details/">Product Details</a></li>
             </ul>
-            <div style="margin-top: 20px;">
-                <nav class="navbar navbar-light bg-light text-center">
-                    <form class="form-inline" method="POST" action="/product/list/">
+            <div class="mt-10 noBig">
+                <nav class="navbar navbar-light bg-light text-center noBig">
+                    <form class="form-inline noBig" method="POST" action="/product/list/">
                         {% csrf_token %}
                       <input class="form-control mr-sm-2" type="search" placeholder="Search product by name" name="title" aria-label="Search by name">
                       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -24,28 +24,28 @@
                   </nav>
                 </div>
             {% for image in images%}
-                <div class="col-md-4">
-                    <div class="product-item">
-                        <div class="product-thumb">
+                <div class="col-md-4 noBig">
+                    <div class="product-item noBig">
+                        <div class="product-thumb noBig">
                             <img class="img-responsive" src="/media/{{image.image}}" alt={{image.description}} />
                             <div class="preview-meta">
-                                <ul>
-                                    <li>
-                                        <a href="/product/detail/{{image.product.id}}">
+                                <ul class="noBig">
+                                    <li class="noBig">
+                                        <a role="button" aria-label="detail" href="/product/detail/{{image.product.id}}">
                                             <i class="tf-ion-ios-search-strong"></i>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/product/update/{{image.product.product_type}}/{{image.product.id}}" ><i class="tf-ion-edit"></i></a>
+                                    <li class="noBig">
+                                        <a role="button" aria-label="edit" href="/product/update/{{image.product.product_type}}/{{image.product.id}}" ><i class="tf-ion-edit"></i></a>
                                     </li>
-                                    <li>
-                                        <a href="/product/delete/{{image.product.id}}"><i class="tf-ion-android-delete"></i></a>
+                                    <li class="noBig">
+                                        <a role="button" aria-label="delete" href="/product/delete/{{image.product.id}}"><i class="tf-ion-android-delete"></i></a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="product-content">
-                            <h4><a href="product-single.htm">{{image.product.title}}</a></h4>
+                        <div class="product-content noBig">
+                            <h2><a href="product-single.htm">{{image.product.title}}</a></h2>
                             <p class="price">$ {{image.product.price}}</p>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
     </div>
 </section>
 
-<div class="flex-pagination mb-3">
+<div class="flex-pagination mb-3" role="application">
     <div class="step-links">
         {% if images.has_previous %}
             <span id="first1"><a href="?page=1">&laquo; first</a></span>

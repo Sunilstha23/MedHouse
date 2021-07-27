@@ -3,7 +3,7 @@
 
 <!-- Start Top Header Bar -->
 <section class="top-header noBig sticky">
-    <div class="container noBig">
+    <div class="container noBig" role="banner">
         <div class="col-md-12 noBig">
             <!-- Site Logo -->
             <div class="logo text-center noBig">
@@ -14,18 +14,16 @@
                 </div>
             </div>
             </div>
-            <div class="col-md-9 col-xs-12 col-sm-4 noBig" id="listOfAccount">
-                <!-- Cart -->
-                <ul class="top-menu text-right list-inline noBig">
-                    <li>
-                        <a href="/customer/logout/" class="btn btn-transparent noBig">Log Out</a>
-                    </li>
-                </ul><!-- / .nav .navbar-nav .navbar-right -->
-            </div>
+    
+            <!-- Cart -->
+            <div class="top-menu text-right list-inline noBig" role="status" aria-label="logout">
+                <a href="/customer/logout/" class="btn btn-transparent noBig" id="doc-logout">Log Out</a>
+            </div><!-- / .nav .navbar-nav .navbar-right -->
+     
         </div>
     </div>
     <i id="check-ace" class="fa fa-check-circle fa-lg noBig" aria-hidden="true"></i>
-    <a type="button" class="noBig" check-ace="0" id="ace-btn"><i class="fa fa-universal-access" aria-hidden="true" data-target="#My-right-side-modal" data-toggle="modal" id="my-circle-btn"></i>
+    <a type="button" class="noBig" check-ace="0" id="ace-btn"><i class="fa fa-universal-access doc-header" aria-hidden="true" data-target="#My-right-side-modal" data-toggle="modal" id="my-circle-btn"></i>
     </a>
 </section>
 <!-- End Top Header Bar -->

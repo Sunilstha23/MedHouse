@@ -1,29 +1,21 @@
 <section class="top-header">
     <div class="container">
-        <div class="col-md-12 col-xs-12 col-sm-4">
+        <div class="col-md-12 col-xs-12 col-sm-4" role="banner">
             <!-- Site Logo -->
-            <div class="logo text-center">
-                <a href="/">
+            <div class="logo text-center noBig">
+                <a aria-label="home" href="/" class="noBig dom">
                     <!-- replace logo here -->
-                    <svg width="135px" height="29px" viewBox="0 0 186 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40"
-                            font-family="AustinBold, Austin" font-weight="bold">
-                            <g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
-                                <text id="AVIATO">
-                                    <tspan x="108.94" y="325">MedHouse</tspan>
-                                </text>
-                            </g>
-                        </g>
-                    </svg>
-                </a>
+                    MedHouse
+                    </a>
+                </div>
             </div>
-        </div>
+        
         
         <span class="dropdown dropdown-slide hover-color" id="add-btn">
-            <a href="#!" class="dropdown-toggle  btn-small" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
-                role="button" aria-haspopup="true" aria-expanded="false">Add Product <span
-                    class="tf-ion-android-add"></span></a>
+            <span role="status" aria-label="add product" class="dropdown-toggle  btn-small" data-toggle="dropdown" data-hover="dropdown" data-delay="350">
+                Add Product 
+            <span class="tf-ion-android-add"></span>
+            </span>
             <div class="dropdown-menu">
                 <div class="row">
                     <!-- Basic -->
@@ -37,6 +29,8 @@
                 </div><!-- / .row -->
             </div><!-- / .dropdown-menu -->
         </span>
-        <a href="/vendor/logout/" class="btn btn-transparent mt-20" id="logout">Log Out</a>
+        <div class="top-menu text-right list-inline noBig" role="status" aria-label="logout">
+            <a href="/vendor/logout/" class="btn btn-transparent noBig" id="logout">Log Out</a>
+        </div>
     </div>
 </section>

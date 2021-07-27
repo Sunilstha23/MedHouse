@@ -4,15 +4,16 @@
 {% block content %}
 {% include 'snippets/vendor-dashboard-header.htm'%}
 {% include 'snippets/page-header.htm' %}
-<section class="user-dashboard page-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="list-inline dashboard-menu text-center">
-                    <li><a href="/vendor/dashboard/">Dashboard</a></li>
-                    <li><a class="active" href="/vendor/order/">Orders</a></li>
-                    <li><a href="/vendor/profile-details/">Profile Details</a></li>
-                    <li><a href="/product/list/">Product Details</a></li>
+
+<section class="user-dashboard page-wrapper noBig" role="main">
+    <div class="container noBig">
+        <div class="row noBig">
+            <div class="col-md-12 noBig">
+                <ul class="list-inline dashboard-menu text-center noBig">
+                    <li class="noBig"><a href="/vendor/dashboard/">Dashboard</a></li>
+                    <li class="noBig"><a class="active" href="/vendor/order/">Orders</a></li>
+                    <li class="noBig"><a href="/vendor/profile-details/">Profile Details</a></li>
+                    <li class="noBig"><a href="/product/list/">Product Details</a></li>
                 </ul>
                 <div style="margin-top: 20px;">
                     <nav class="navbar navbar-light bg-light text-center">
@@ -25,17 +26,17 @@
                 </div>
                 <div class="dashboard-wrapper user-dashboard">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" aria-label="order table">
                             <thead>
                                 <tr>
-                                    <th>Order ID</th>
-                                    <th>Customer</th>
-                                    <th>Contact Number</th>
-                                    <th>Date</th>
-                                    <th>Items</th>
-                                    <th>Total Price</th>
-                                    <th>Status</th>
-                                    <th></th>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Contact Number</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Items</th>
+                                    <th scope="col">Total Price</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,8 +69,8 @@
     </div>
 </section>
 
-<div class="flex-pagination mb-3">
-    <div class="step-links">
+<div class="flex-pagination mb-3 noBig">
+    <div class="step-links noBig">
         {% if orders.has_previous %}
             <span id="first1"><a href="?page=1">&laquo; first</a></span>
            <span id="previous1"><a href="?page={{ orders.previous_page_number }}">previous</a></span>
@@ -90,26 +91,26 @@
 {% regroup order_items by order as o_items %}
 
 {% for items in o_items%}
-<div class="modal fade" id="changeStatus_{{ items.grouper.id }}">
-    <div class="modal-dialog">
-        <div class="modal-content product-checkout-details">
-            <div class="modal-header block">
+<div class="modal fade noBig" id="changeStatus_{{ items.grouper.id }}">
+    <div class="modal-dialog noBig">
+        <div class="modal-content product-checkout-details noBig">
+            <div class="modal-header block noBig">
                 <button type="button" class="close" data-dismiss="modal">×</button> 
                 <h4 class="widget-title">Detail of order</h4>   
                 {% for item in items.list%}
                 <hr>
-                <div class="media product-card">
+                <div class="media product-card noBig">
                     <a class="pull-left" href="product-single.htm">
                        <img class="media-object" src="/media/{{item.image.image}}" alt="Image" />
                     </a>
-                    <div class="media-body">
+                    <div class="media-body noBig">
                        <h4 class="media-heading"><a href="product-single.htm">{{item.product.title}}</a></h4>
                        <p class="price">{{item.quantity}} x $ {{item.unit_price}}</p>
                     </div>
                  </div>
                 {% endfor %}    
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer noBig">
                 <button type="button" class="btn-css btn btn-secondory" data-dismiss="modal">close</button>                               
             </div>
         </div> 

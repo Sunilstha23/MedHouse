@@ -6,6 +6,19 @@
 .mr > span{
     margin-right: 38px !important;
 }
+.doc-header{
+    position: fixed !important;
+    right: 50px !important;
+    top: 47px !important;
+
+}
+#doc-logout{
+    position: relative;
+    float: right;
+    bottom: 67px;
+    right: 136px;
+    font-weight: 400;
+}
 .bttn{
     font-weight: 700;
     color: black;

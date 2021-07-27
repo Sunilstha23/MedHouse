@@ -1,15 +1,15 @@
 {% extends 'base.htm' %}
 {% load static %}
 {% block content %}
-<section class="signin-page account">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="block text-center">
+<section class="signin-page account noBig" role="main">
+    <div class="container noBig">
+      <div class="row noBig">
+        <div class="col-md-6 col-md-offset-3 noBig">
+          <div class="block text-center noBig">
             <a href="/">
               <img alt="gravater" class="dp" src={% static '/images/favicon.png' %}>
             </a>
-            <div class="detail-txt">
+            <div class="detail-txt noBig">
               <a href="/">
                 <span class="username">
                   Med-House
@@ -17,11 +17,11 @@
               </a>
             </div>
             
-            <h3 class="text-center"><i class="tf-ion-android-add"></i> Add Product</h3>
+            <h1 class="text-center noBig"><i class="tf-ion-android-add"></i> Add Product</h1>
             <p>Choose to add a product</p>
-            <h4 class="mt-10">Hygenic</h4>
+            <h2 class="mt-10">Hygenic</h2>
             <!-- hygenic form -->
-            <form enctype="multipart/form-data" class="text-left clearfix" action="/product/add/hygenic_product/" method="POST" id="hygenic">
+            <form enctype="multipart/form-data" class="text-left clearfix noBig" action="/product/add/hygenic_product/" method="POST" id="hygenic">
               {% csrf_token %}
               <input type="hidden" name="product_type" value="hygenic_product">
               <div class="form-group">
@@ -34,7 +34,7 @@
                 {{form.meta_title}}
                 <p class="help">{{form.meta_title.errors }}</p>
               </div>
-              <div class="form-row">
+              <div class="form-row noBig">
                 <div class="form-group col-md-6 leftside">
                   <label for="inputPrice">Price</label>
                   {{form.price}}
@@ -46,7 +46,7 @@
                   <p class="help">{{form.quantity.errors }}</p>
                 </div>
               </div>
-              <div class="form-row">
+              <div class="form-row clear-both noBig">
                 <div class="form-group col-md-6 leftside">
                   <label for="inputManifactureDate">Manufactured Date</label>
                   {{form.manufacture_date}}
@@ -74,7 +74,7 @@
                 {{img_form.image.errors}}   
               </div>
               <hr>
-              <div class="text-center">
+              <div class="text-center noBig">
                 <button type="submit" class="btn btn-main text-center" >Add Product</button>
               </div>
             </form>

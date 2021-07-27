@@ -1,15 +1,15 @@
 {% extends 'base.htm' %}
 {% load static %}
 {% block content %}
-<section class="signin-page account">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="block text-center">
+<section class="signin-page account noBig" role="main">
+    <div class="container noBig">
+      <div class="row noBig">
+        <div class="col-md-6 col-md-offset-3 noBig">
+          <div class="block text-center noBig">
             <a href="/">
               <img alt="gravater" class="dp" src={% static '/images/favicon.png' %}>
             </a>
-            <div class="detail-txt">
+            <div class="detail-txt noBig">
               <a href="/">
                 <span class="username">
                   Med-House
@@ -17,9 +17,9 @@
               </a>
             </div>
             
-            <h3 class="text-center"><i class="tf-ion-android-add"></i> Add Product</h3>
+            <h1 class="text-center noBig"><i class="tf-ion-android-add"></i> Add Product</h1>
             <p>Choose to add a product</p>
-            <h4 class="mt-10">Medicine</h4>
+            <h2 class="mt-10">Medicine</h2>
             <!-- medicine form -->
             <form enctype="multipart/form-data" class="text-left clearfix" action="/product/add/medicine/" method="POST" id="medicine" style="display: block;">
               {% csrf_token %}
@@ -39,7 +39,7 @@
                 {{form.medical_name}}
                 <p class="help">{{form.medical_name.errors }}</p>
               </div>
-              <div class="form-row">
+              <div class="form-row noBig">
                 <div class="form-group col-md-6 leftside">
                   <label for="inputPrice">Price</label>
                   {{form.price}}
@@ -51,7 +51,7 @@
                   <p class="help">{{form.quantity.errors }}</p>
                 </div>
               </div>
-              <div class="form-row">
+              <div class="form-row noBig clear-both">
                 <div class="form-group col-md-6 leftside">
                   <label for="inputManifactureDate">Manufactured Date</label>
                   {{form.manufacture_date}}
@@ -63,7 +63,7 @@
                   <p class="help">{{form.expiry_date.errors }}</p>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group clear-both">
                 <label for="inputManufacture">Manufactured by</label>
                 {{form.manufacturer}}
                 <p class="help">{{form.manufacturer.errors }}</p>
@@ -79,7 +79,7 @@
                 {{img_form.image.errors}}   
               </div>
               <hr>
-              <div class="text-center">
+              <div class="text-center noBig">
                 <button type="submit" class="btn btn-main text-center" >Add Product</button>
               </div>
             </form>

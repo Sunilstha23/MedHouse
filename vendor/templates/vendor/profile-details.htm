@@ -5,39 +5,39 @@
 {% include 'snippets/vendor-dashboard-header.htm'%}
 {% include 'snippets/page-header.htm' %}
 
-<section class="user-dashboard page-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul class="list-inline dashboard-menu text-center">
-                    <li><a href="/vendor/dashboard/">Dashboard</a></li>
-                    <li><a href="/vendor/order/">Orders</a></li>
-                    <li><a class="active" href="/vendor/profile-details/">Profile Details</a></li>
-                    <li><a href="/product/list/">Product Details</a></li>
+<section class="user-dashboard page-wrapper noBig" role="main">
+    <div class="container noBig">
+        <div class="row noBig">
+            <div class="col-md-12 noBig">
+                <ul class="list-inline dashboard-menu text-center noBig">
+                    <li class="noBig"><a href="/vendor/dashboard/">Dashboard</a></li>
+                    <li class="noBig"><a href="/vendor/order/">Orders</a></li>
+                    <li class="noBig"><a class="active" href="/vendor/profile-details/">Profile Details</a></li>
+                    <li class="noBig"><a href="/product/list/">Product Details</a></li>
                 </ul>
-                <div class="dashboard-wrapper dashboard-user-profile">
-                    <div class="media">
-                        <div class="pull-left text-center" href="#!">
+                <div class="dashboard-wrapper dashboard-user-profile noBig">
+                    <div class="media  noBig">
+                        <div class="pull-left text-center noBig" href="#!">
                             <img class="media-object user-img" src="/media/{{vendor_img.image}}" alt="Profile image of {{vendor.shop_name}}">
                             <a href="/vendor/vendorupdate/{{vendor.id}}" class="btn btn-main mt-20">Edit <i class="tf-ion-edit"></i></a>
                         </div>
-                        <div class="media-body">
-                            <ul class="user-profile-list">
-                                <h3 class="font-weight-bold text-uppercase">Vendor Details</h3>
-                                <li><span>Full Name:</span>{{vendor.full_name}}</li>
-                                <li><span>Gender:</span>{{vendor.gender}}</li>
-                                  <li><span>Email:</span>{{vendor.email}}</li>
-                                <li><span>Phone:</span>{{vendor.contact_number}}</li>
-                                <li><span>Date of Birth:</span>{{vendor.dob}}</li>
-                                <li><span>Address:</span>{{vendor.address}}</li>
+                        <div class="media-body noBig">
+                            <h2 class="font-weight-bold text-uppercase">Vendor Details</h2>
+                            <ul class="user-profile-list noBig" role="list">
+                                <li class="noBig" role="listitem"><span>Full Name:</span>{{vendor.full_name}}</li>
+                                <li class="noBig" role="listitem"><span>Gender:</span>{{vendor.gender}}</li>
+                                <li class="noBig" role="listitem"><span>Email:</span>{{vendor.email}}</li>
+                                <li class="noBig" role="listitem"><span>Phone:</span>{{vendor.contact_number}}</li>
+                                <li class="noBig" role="listitem"><span>Date of Birth:</span>{{vendor.dob}}</li>
+                                <li class="noBig" role="listitem"><span>Address:</span>{{vendor.address}}</li>
                             </ul>
                             <hr>
-                            <ul class="user-profile-list">
-                                <h3 class="font-weight-bold text-uppercase">Pharmacy Details</h3>
-                                <li><span>Shop Name:</span>{{vendor.shop_name}}</li>
-                                <li><span>Registered Business Name:</span>{{vendor.business_name}}</li>
-                                <li><span>PAN Number:</span>{{vendor.pan_number}}</li>
-                                <li><span>VAT Number:</span>{{vendor.vat_number}}</li>
+                            <h3 class="font-weight-bold text-uppercase">Pharmacy Details</h3>
+                            <ul class="user-profile-list noBig" role="list">
+                                <li class="noBig" role="listitem"><span>Shop Name:</span>{{vendor.shop_name}}</li>
+                                <li class="noBig" role="listitem"><span>Registered Business Name:</span>{{vendor.business_name}}</li>
+                                <li class="noBig" role="listitem"><span>PAN Number:</span>{{vendor.pan_number}}</li>
+                                <li class="noBig" role="listitem"><span>VAT Number:</span>{{vendor.vat_number}}</li>
                             </ul>
                             
                         </div>
@@ -47,7 +47,6 @@
         </div>
     </div>
 </section>
-
 {% include 'snippets/footer2.htm'%}  
 {% endblock content %}
 

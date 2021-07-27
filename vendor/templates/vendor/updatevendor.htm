@@ -2,22 +2,22 @@
 {% load static %}
 
 {% block content %}
-<section class="signin-page account">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="block text-center">
+<section class="signin-page account noBig" role="main">
+  <div class="container noBig">
+    <div class="row noBig">
+      <div class="col-md-10 col-md-offset-1 noBig">
+        <div class="block text-center noBig">
+          <a href="/" class="noBig">
+            <img alt="logo" class="dp" src={% static '/images/favicon.png' %}>
+         </a>
+          <div class="detail-txt noBig">
             <a href="/">
-              <img alt="gravater" class="dp" src={% static '/images/favicon.png' %}>
+              <span class="username">
+                 Med-House
+             </span>
            </a>
-            <div class="detail-txt">
-              <a href="/">
-                <span class="username">
-                   Med-House
-               </span>
-             </a>
-           </div>
-            <h3 class="text-center">Update Your business Account</h3>
+         </div>
+          <h1 class="text-center noBig">Create Your business Account</h1>
           
             <form enctype="multipart/form-data" class="text-left clearfix" method="POST" action="/vendor/vendorupdate/{{vendor.id}}/">
               {% csrf_token %}
@@ -58,7 +58,7 @@
                 <p class="help">{{form.description.errors }}</p>
               </div>
               <hr>
-              <h3 class="text-center">Valid Documents</h3>
+              <h2 class="text-center noBig">Valid Documents</h2>
               <hr>
               <div class="form-row">
                   <label for="OpenfileUpload">Upload your Profile Picture</label>
@@ -68,15 +68,15 @@
               <div class="form-group">
                 <label for="CurrentImages">Current Images</label>
                 <br>
-                  <div class="col-md-10">
-                    <div class="product-item">
-                      <div class="product-thumb">
+                  <div class="col-md-10 noBig">
+                    <div class="product-item noBig">
+                      <div class="product-thumb noBig">
                         <img class="img-responsive" src="/media/{{image.image}}" alt={{image.description}} />
                       </div>
                     </div>
                   </div>	                  
               </div>
-              <div class="text-center">
+              <div class="text-center noBig">
                 <button type="submit" class="btn btn-main text-center">Update</button>
               </div>
             

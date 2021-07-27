@@ -4,7 +4,7 @@
 {% block content %}
 {% include 'snippets/doctor-header.htm'%}
 {% include 'snippets/page-header.htm' %}
-<section class="user-dashboard page-wrapper noBig">
+<section class="user-dashboard page-wrapper noBig" role="main">
     <div class="container noBig">
         <div class="row noBig">
             <div class="col-md-12 noBig">
@@ -24,28 +24,29 @@
                 </div>
                 <div class="dashboard-wrapper user-dashboard noBig">
                     <div class="table-responsive noBig">
-                        <table class="table noBig">
+                        <table class="table noBig" role="complementary">
+                            <h2>Appointment</h2>
                             <thead class="noBig">
                                 <tr class="noBig">
-                                    <th>Appointment ID</th>
-                                    <th>Patient</th>
-                                    <th>Booked Date</th>
-                                    <th>Appointment Fixed Date</th>
-                                    <th>Total Price</th>
-                                    <th>Status</th>
-                                    <th></th>
+                                    <th scope="col">Appointment ID</th>
+                                    <th scope="col">Patient</th>
+                                    <th scope="col">Booked Date</th>
+                                    <th scope="col">Appointment Fixed Date</th>
+                                    <th scope="col">Total Price</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Edit</th>
                                 </tr>
                             </thead>
                             <tbody class="noBig">
                                 {% for appointment in appointments%}
                                     <tr class="noBig">
-                                        <td>#{{appointment.id}}</td>
-                                        <td>{{appointment.patient_name}}</td>
-                                        <td>{{appointment.timestamp}}</td>
-                                        <td>{{appointment.fixed_on }}</td>
-                                        <td>${{appointment.doctor.charge}}</td>
-                                        <td id="lol"><span class="label label-info">{{appointment.status}}</span></td>
-                                        <td>
+                                        <td scope="col">#{{appointment.id}}</td>
+                                        <td scope="col">{{appointment.patient_name}}</td>
+                                        <td scope="col">{{appointment.timestamp}}</td>
+                                        <td scope="col">{{appointment.fixed_on }}</td>
+                                        <td scope="col">${{appointment.doctor.charge}}</td>
+                                        <td scope="col" id="lol"><span class="label label-info">{{appointment.status}}</span></td>
+                                        <td scope="col">
                                             {% if appointment.payment != True %}
                                                 <a class="btn btn-default" href="/doctor/appointment/cancel/{{appointment.id}}" > Cancel </a>
                                                 <a class="btn btn-default" href="/doctor/payment/{{appointment.id}}" > Make Payment </a>
@@ -61,7 +62,6 @@
                                                 <a class="btn btn-default" href="/doctor/status/completed/{{appointment.id}}/">Update status to completed</a>
                                             {% endif %}
 
-
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -74,7 +74,7 @@
     </div>
 </section>
 
-<div class="flex-pagination mb-3">
+<div class="flex-pagination mb-3" role="application">
     <div class="step-links">
         {% if appointments.has_previous %}
             <span id="first1"><a href="?page=1">&laquo; first</a></span>
@@ -101,8 +101,6 @@
                 <h4 class="widget-title">Detail of appointment</h4> 
                 <hr>
                 <div class="media product-card noBig">
-                    <a class="pull-left" href="product-single.htm">
-                    </a>
                     <div class="media-body noBig">
                         <h4 class="media-heading"><a>Patient's Name :</a></h4>
                        <p class="price">{{appointment.patient_name}}</p>

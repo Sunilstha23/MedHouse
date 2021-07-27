@@ -1,15 +1,15 @@
 {% extends 'base.htm' %}
 {% load static %}
 {% block content %}
-<section class="signin-page account">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="block text-center">
+<section class="signin-page account noBig" role="main">
+    <div class="container noBig">
+      <div class="row noBig">
+        <div class="col-md-6 col-md-offset-3 noBig">
+          <div class="block text-center noBig">
             <a href="/">
               <img alt="gravater" class="dp" src={% static '/images/favicon.png' %}>
             </a>
-            <div class="detail-txt">
+            <div class="detail-txt noBig">
               <a href="/">
                 <span class="username">
                   Med-House
@@ -17,10 +17,10 @@
               </a>
             </div>
             
-            <h3 class="text-center"><i class="tf-ion-android-add"></i> Update Product</h3>
-            <h4 class="mt-10">Hygenic</h4>
+            <h1 class="text-center noBig"><i class="tf-ion-android-add"></i> Update Product</h1>
+            <h2 class="mt-10">Hygenic</h2>
             <!-- hygenic form -->
-            <form enctype="multipart/form-data" class="text-left clearfix" action="/product/update/hygenic_product/{{product.id}}" method="POST" id="hygenic">
+            <form enctype="multipart/form-data" class="text-left clearfix noBig" action="/product/update/hygenic_product/{{product.id}}" method="POST" id="hygenic">
               {% csrf_token %}
               <input type="hidden" name="product_type" value="hygenic_product">
               <div class="form-group">
@@ -33,7 +33,7 @@
                 {{form.meta_title}}
                 <p class="help">{{form.meta_title.errors }}</p>
               </div>
-              <div class="form-row">
+              <div class="form-row noBig">
                 <div class="form-group col-md-6 leftside">
                   <label for="inputPrice">Price</label>
                   {{form.price}}
@@ -45,7 +45,7 @@
                   <p class="help">{{form.quantity.errors }}</p>
                 </div>
               </div>
-              <div class="form-row">
+              <div class="form-row noBig clear-both">
                 <div class="form-group col-md-6 leftside">
                   <label for="inputManifactureDate">Manufactured Date</label>
                   {{form.manufacture_date}}
@@ -57,7 +57,7 @@
                   <p class="help">{{form.expiry_date.errors }}</p>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group clear-both">
                 <label for="inputManufacture">Manufactured by</label>
                 {{form.manufacturer}}
                 <p class="help">{{form.manufacturer.errors }}</p>
@@ -76,9 +76,9 @@
                 <label for="CurrentImages">Current Images</label>
                 <br>
                 {% for image in images %}		
-                  <div class="col-md-10">
-                    <div class="product-item">
-                      <div class="product-thumb">
+                  <div class="col-md-10 noBig">
+                    <div class="product-item noBig">
+                      <div class="product-thumb noBig">
                         <img class="img-responsive" src="/media/{{image.image}}" alt={{image.description}} />
                       </div>
                     </div>
@@ -86,7 +86,7 @@
                 {% endfor %}
               </div>
               <hr>
-              <div class="text-center">
+              <div class="text-center noBig">
                 <button type="submit" class="btn btn-main text-center" >Update Product</button>
               </div>
             </form>

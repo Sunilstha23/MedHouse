@@ -4,77 +4,76 @@
 {% block content %}
 {% include 'snippets/vendor-dashboard-header.htm'%}
 {% include 'snippets/page-header.htm' %}
-<section class="user-dashboard page-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+<section class="user-dashboard page-wrapper noBig" role="main">
+    <div class="container noBig">
+        <div class="row noBig">
+            <div class="col-md-12 noBig">
                 <ul class="list-inline dashboard-menu text-center">
-                    <li><a class="active" href="/vendor/dashboard/">Dashboard</a></li>
-                    <li><a href="/vendor/order/">Orders</a></li>
-                    <li><a href="/vendor/profile-details/">Profile Details</a></li>
-                    <li><a href="/product/list/">Product Details</a></li>
+                    <li class="noBig"><a class="active" href="/vendor/dashboard/">Dashboard</a></li>
+                    <li class="noBig"><a href="/vendor/order/">Orders</a></li>
+                    <li class="noBig"><a href="/vendor/profile-details/">Profile Details</a></li>
+                    <li class="noBig"><a href="/product/list/">Product Details</a></li>
                 </ul>
-                <div class="dashboard-wrapper user-dashboard">
-                    <div class="media">
-                        <div class="pull-left">
+                <div class="dashboard-wrapper user-dashboard noBig">
+                    <div class="media noBig">
+                        <div class="pull-left noBig">
                             <!-- <img class="media-object user-img" src='/media/'.{{vendor_img.image}} alt="Image"> -->
                             <img class="media-object user-img" src="/media/{{vendor_img.image}} " alt="Profile image of {{vendor.shop_name}}">
                         </div>
-                        <div class="media-body">
+                        <div class="media-body noBig">
                             <h2 class="media-heading">Welcome {{vendor.full_name}}</h2>
                             <p>{{vendor.description}}</p>
                         </div>
                     </div>
-                    <div class="total-order mt-20">
-                        <h4>Expiring items</h4>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
+                    <div class="total-order mt-20 noBig">
+                        <h3>Expiring items</h3>
+                            <div class="table-responsive noBig">
+                                <table class="table noBig" aria-label="product table">
+                                    <thead class="noBig">
+                                        <tr class="noBig">
                                             <th>Product</th>
                                             <th>Manufactured Date</th>
                                             <th> Expiry Date</th>
-                                            <th>Items</th>
+                                            <th>Quantity</th>
                                             <th>Price</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="noBig">
                                     {% for product in expiry %}
-                                        <tr>
-                                            <td><a href="/product/detail/{{product.id}}">{{product.title}}</a></td>
-                                            <td>{{product.manufacture_date}}</td>
-                                            <td>{{product.expiry_date}}</td>
-                                            <td>{{product.quantity}}</td>
-                                            <td>{{product.price}}</td>
+                                        <tr class="noBig">
+                                            <td ><a href="/product/detail/{{product.id}}">{{product.title}}</a></td>
+                                            <td >{{product.manufacture_date}}</td>
+                                            <td >{{product.expiry_date}}</td>
+                                            <td >{{product.quantity}}</td>
+                                            <td >{{product.price}}</td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
                     </div>
-                    <div class="total-order mt-20">
+                    <div class="total-order mt-20 noBig">
                         <h4>Items that needs to be added</h4>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
+                            <div class="table-responsive noBig">
+                                <table class="table noBig">
+                                    <thead class="noBig">
+                                        <tr class="noBig">
                                             <th>Product</th>
                                             <th>Manufactured Date</th>
                                             <th> Expiry Date</th>
-                                            <th>Items</th>
+                                            <th>Quantity</th>
                                             <th>Price</th>
-                                            <th></th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                     {% for product in finishing %}
-                                        <tr>
-                                            <td><a href="/product/detail/{{product.id}}">{{product.title}}</a></td>
-                                            <td>{{product.manufacture_date}}</td>
-                                            <td>{{product.expiry_date}}</td>
-                                            <td>{{product.quantity}}</td>
-                                            <td>{{product.price}}</td>
+                                        <tr class="noBig">
+                                            <td ><a href="/product/detail/{{product.id}}">{{product.title}}</a></td>
+                                            <td >{{product.manufacture_date}}</td>
+                                            <td >{{product.expiry_date}}</td>
+                                            <td >{{product.quantity}}</td>
+                                            <td >{{product.price}}</td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
